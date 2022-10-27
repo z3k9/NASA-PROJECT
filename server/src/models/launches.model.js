@@ -34,7 +34,7 @@ function addNewLaunch(launch){
         flightNumber: latestFlightNumber,
         upcoming: true,
         success: true
-    }))
+    }));
 }
 
 module.exports = {
