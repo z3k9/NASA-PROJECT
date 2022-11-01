@@ -1,5 +1,5 @@
 const launches = new Map();
- let latestFlightNumber = 99;
+let latestFlightNumber = 99;
 
 const launch ={
     flightNumber: 99,

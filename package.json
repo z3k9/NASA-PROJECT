@@ -11,7 +11,8 @@
     "server": "npm start --prefix server",
     "client": "npm start --prefix client",
     "watch": "npm run server & npm run client",
-    "deploy": "npm run build --prefix client && npm start --prefix server"
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/z3k9/NASA-PROJECT/issues"
   },
-  "homepage": "https://github.com/z3k9/NASA-PROJECT#readme"
+  "homepage": "https://github.com/z3k9/NASA-PROJECT#readme",
+  "dependencies": {
+    "pm2": "^5.2.2"
+  }
 }
