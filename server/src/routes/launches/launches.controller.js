@@ -15,7 +15,7 @@ async function httpAddNewLaunch(req,res){
     if(isNaN(launch.launchDate)){
         return res.status(400).json({
             error: "Invalid launch date"
-        })
+        });
     }
     await addNewLaunch(launch);
     return res.status(201).json(launch);

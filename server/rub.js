@@ -1,9 +1,9 @@
 let pay = [];
-let initAmt = 3000;
+let initAmt = 2000;
 
 
 for(let i =1; i<=100; i++){
-    initAmt = initAmt +(initAmt/3);
+    initAmt = initAmt +(initAmt/6);
     pay.push(initAmt);
 }
 
