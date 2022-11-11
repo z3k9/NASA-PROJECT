@@ -3,7 +3,7 @@ const app = express();
 const path = require(('path'));
 const cors = require('cors');
 const morgan = require('morgan');
-const api = require('./routes/api');
+const v1 = require('./routes/v1');
 
 // setting up our middleware
 app.use(cors({
@@ -13,7 +13,7 @@ app.use(morgan("combined"));
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.use('/v1',api);
+app.use('/v1', v1);
 
 
 app.get('/*',(req,res)=>{

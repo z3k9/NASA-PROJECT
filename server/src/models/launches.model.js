@@ -1,6 +1,7 @@
 const axios = require('axios');
 const launches = require('./launches.mongo');
 const planets = require('./planets.mongo');
+
 const DEFAULT_FLIGHT_NUMBER = 99;
 
 // launch ={
@@ -26,14 +27,16 @@ async function loadLaunchData(){
             {
                 path: 'rocket',
                 select: {
-                    name: 1}
+                    name : 1}
                 },
             {
                 path: 'payloads',
                 select: {
                     'customers' : 1
                 }
-            }]}
+            }
+            ]
+        }
     });
     if (response.status !== 200) {
         console.log('Problem downloading launch data');
@@ -54,7 +57,6 @@ async function loadLaunchData(){
             upcoming: launchDoc['upcoming'],
             customers,
         }
-        
         await saveLaunch(launch);
     }
 }
@@ -82,8 +84,13 @@ async function getLatestFlightNumber(){
     }
     return latestLaunch.flightNumber;
 }
-async function getAllLaunches(){
-    return await launches.find({}, {'_id':0, '__v':0});
+async function getAllLaunches(skip, limit){
+    return await launches
+    .find({}, {'_id':0, '__v':0})
+    .sort({flightNumber: 1})
+    .skip(skip)
+    .limit(limit);
+
 }
 
 //custom async function to save our launch object to mongo atlas
